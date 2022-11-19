@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
@@ -155,7 +156,7 @@ public class FileUtils {
     public static File createTemporaryDirectory(String prefix) {
         File tempDir = null;
         try {
-            tempDir = File.createTempFile(prefix, "");
+            tempDir = Files.createTempFile(prefix, "").toFile();
         } catch (IOException e) {
             throw new RuntimeException("Could not create temporary file " + prefix);
         }

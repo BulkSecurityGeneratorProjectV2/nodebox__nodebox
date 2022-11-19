@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -69,7 +70,7 @@ public class Movie {
         // Generate the prefix for a temporary file.
         // We generate a temporary file, then use that as the prefix for our own files.
         try {
-            File tempFile = File.createTempFile(TEMPORARY_FILE_PREFIX, "");
+            File tempFile = Files.createTempFile(TEMPORARY_FILE_PREFIX, "").toFile();
             temporaryFileTemplate = tempFile.getPath() + "-%05d.png";
             tempFile.delete();
         } catch (IOException e) {

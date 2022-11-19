@@ -3,6 +3,7 @@ package nodebox.client;
 import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
@@ -170,7 +171,7 @@ public class FileUtils {
     public static File createTemporaryDirectory(String prefix) {
         File tempDir = null;
         try {
-            tempDir = File.createTempFile(prefix, "");
+            tempDir = Files.createTempFile(prefix, "").toFile();
         } catch (IOException e) {
             throw new RuntimeException("Could not create temporary file " + prefix);
         }
